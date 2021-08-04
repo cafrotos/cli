@@ -1,3 +1,14 @@
+# @cafrotos/sequelize-cli
+Custom sequelize-cli for typescript using ts-node
+
+## Install
+```bash
+yarn add -D @cafrotos/sequelize-cli
+```
+
+## Usage
+Usage like a sequelize-cli
+
 # sequelize/cli [![npm version](https://badge.fury.io/js/sequelize-cli.svg)](https://npmjs.com/package/sequelize-cli) [![Build Status](https://travis-ci.org/sequelize/cli.svg?branch=master)](https://travis-ci.org/sequelize/cli)
 
 The [Sequelize](https://sequelize.org) Command Line Interface (CLI)

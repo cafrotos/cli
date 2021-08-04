@@ -1,6 +1,6 @@
 {
   "name": "@cafrotos/sequelize-cli",
-  "version": "6.2.0",
+  "version": "6.2.1",
   "description": "The Sequelize CLI",
   "bin": {
     "sequelize": "./lib/sequelize",

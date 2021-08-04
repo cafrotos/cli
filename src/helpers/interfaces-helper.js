@@ -48,6 +48,9 @@ module.exports = {
       );
     }
 
-    helpers.asset.append(interfacesPathfile, this.generateFileContent(args));
+    helpers.asset.append(
+      interfacesPathfile,
+      `\n\n` + this.generateFileContent(args)
+    );
   },
 };

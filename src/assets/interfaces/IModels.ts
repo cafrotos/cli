@@ -1,5 +1,3 @@
-
-
 export interface I<%= name %> {
   id: number
   <% attributes.forEach(function(attribute, index) { %>

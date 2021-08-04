@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { promisify } from 'util';
 import helpers from './index';
 import getYArgs from '../core/yargs';
+import ts from 'typescript';
 
 const args = getYArgs().argv;
 
@@ -12,6 +13,14 @@ const api = {
   config: undefined,
   rawConfig: undefined,
   error: undefined,
+
+  requireFromString(src) {
+    var Module = module.constructor;
+    var m = new Module();
+    m._compile(src, '');
+    return m.exports;
+  },
+
   init() {
     return Promise.resolve()
       .then(() => {
@@ -21,7 +30,15 @@ const api = {
           config = api.parseDbUrl(args.url);
         } else {
           try {
-            config = require(api.getConfigFile());
+            const pathfile = api.getConfigFile();
+            if (pathfile.slice(-3) === '.ts') {
+              const code = fs.readFileSync(pathfile, { encoding: 'utf-8' });
+              const parseJS = ts.transpile(code);
+
+              config = this.requireFromString(parseJS).default;
+            } else {
+              config = require(pathfile);
+            }
           } catch (e) {
             api.error = e;
           }
@@ -50,8 +67,8 @@ const api = {
       return path.resolve(process.cwd(), args.config);
     }
 
-    const defaultPath = path.resolve(process.cwd(), 'config', 'config.json');
-    const alternativePath = defaultPath.replace('.json', '.js');
+    const defaultPath = path.resolve(process.cwd(), 'config', 'databases.ts');
+    const alternativePath = defaultPath.replace('.ts', '.json');
 
     return helpers.path.existsSync(alternativePath)
       ? alternativePath
@@ -66,7 +83,40 @@ const api = {
     return helpers.path.existsSync(api.getConfigFile());
   },
 
-  getDefaultConfig() {
+  getDefaultConfig(ext = 'ts') {
+    if (ext === 'ts') {
+      return `import { Options } from "sequelize/types";
+
+      const development: Options = {
+        username: "root",
+        password: "root",
+        database: "development_database",
+        host: "127.0.0.1",
+        dialect: "mysql"
+      }
+      
+      const test: Options = {
+        username: "root",
+        password: "root",
+        database: "development_dtest",
+        host: "127.0.0.1",
+        dialect: "mysql"
+      }
+      
+      const production: Options = {
+        username: "root",
+        password: "root",
+        database: "development_production",
+        host: "127.0.0.1",
+        dialect: "mysql"
+      }
+      
+      export default {
+        development,
+        test,
+        production
+      }`;
+    }
     return (
       JSON.stringify(
         {
