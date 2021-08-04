@@ -30,6 +30,10 @@ export function _baseOptions(yargs) {
       describe: 'The path to the config file',
       type: 'string',
     })
+    .option('interfaces', {
+      describe: 'The path to the interfaces file',
+      type: 'string',
+    })
     .option('options-path', {
       describe: 'The path to a JSON file with additional options',
       type: 'string',

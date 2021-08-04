@@ -1,4 +1,5 @@
 import helpers from './index';
+import _ from 'lodash';
 
 const Sequelize = helpers.generic.getSequelize();
 const validAttributeFunctionType = ['array', 'enum'];
@@ -108,8 +109,9 @@ module.exports = {
   },
 
   generateFileContent(args) {
-    return helpers.template.render('models/model.js', {
-      name: args.name,
+    return helpers.template.render('models/model.ts', {
+      name: _.capitalize(args.name),
+      interfacePath: helpers.interfaces.getRelativePath(),
       attributes: this.transformAttributes(args.attributes),
       underscored: args.underscored,
     });

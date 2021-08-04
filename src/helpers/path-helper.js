@@ -44,7 +44,7 @@ module.exports = {
   },
 
   getFileExtension() {
-    return 'js';
+    return 'ts';
   },
 
   addFileExtension(basename, options) {

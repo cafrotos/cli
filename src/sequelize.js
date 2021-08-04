@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!./node_modules/.bin/ts-node
 
 import getYArgs from './core/yargs';
 

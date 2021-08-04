@@ -35,6 +35,7 @@ exports.handler = function (args) {
   }
 
   helpers.migration.generateTableCreationFile(args);
+  helpers.interfaces.appendInterfaces(args);
   helpers.view.log(
     'New model was created at',
     clc.blueBright(helpers.path.getModelPath(args.name)),
@@ -46,6 +47,13 @@ exports.handler = function (args) {
       helpers.path.getMigrationPath(
         helpers.migration.generateMigrationName(args)
       )
+    ),
+    '.'
+  );
+  helpers.view.log(
+    'New interface was appended at',
+    clc.blueBright(
+      helpers.path.getMigrationPath(helpers.interfaces.getInterfacesFile(args))
     ),
     '.'
   );

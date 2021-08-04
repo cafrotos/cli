@@ -16,6 +16,10 @@ const assets = {
     fs.writeFileSync(targetPath, content);
   },
 
+  append: (targetPath, content) => {
+    fs.appendFileSync(targetPath, content);
+  },
+
   inject: (filePath, token, content) => {
     const fileContent = fs.readFileSync(filePath).toString();
     fs.writeFileSync(filePath, fileContent.replace(token, content));

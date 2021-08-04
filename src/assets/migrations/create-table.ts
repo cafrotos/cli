@@ -1,7 +1,7 @@
-'use strict';
+import { QueryInterface, DataTypes } from "sequelize/types"
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  up: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
     await queryInterface.createTable('<%= tableName %>', {
       id: {
         allowNull: false,
@@ -25,10 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    })
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
     await queryInterface.dropTable('<%= tableName %>');
   }
-};
+}

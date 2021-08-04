@@ -71,10 +71,9 @@ const init = {
       helpers.asset.write(
         indexPath,
         helpers.template.render(
-          'models/index.js',
+          'models/index.ts',
           {
-            configFile:
-              "__dirname + '/" + relativeConfigPath.replace(/\\/g, '/') + "'",
+            configFile: relativeConfigPath.replace(/\\/g, '/') + "'",
           },
           {
             beautify: false,

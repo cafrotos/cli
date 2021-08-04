@@ -1,7 +1,7 @@
-'use strict';
+import { QueryInterface, DataTypes } from "sequelize/types"
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
+export default {
+  up: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
     /**
      * Add altering commands here.
      *
@@ -10,7 +10,7 @@ module.exports = {
      */
   },
 
-  down: async (queryInterface, Sequelize) => {
+  down: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
     /**
      * Add reverting commands here.
      *

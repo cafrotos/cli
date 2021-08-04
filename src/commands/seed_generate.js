@@ -17,7 +17,7 @@ exports.handler = function (args) {
   fs.writeFileSync(
     helpers.path.getSeederPath(args.name),
     helpers.template.render(
-      'seeders/skeleton.js',
+      'seeders/skeleton.ts',
       {},
       {
         beautify: false,
