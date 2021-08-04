@@ -2,7 +2,7 @@ import { QueryInterface, DataTypes } from "sequelize/types"
 
 module.exports = {
   up: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
-    await queryInterface.createTable('<%= tableName %>', {
+    await queryInterface.createTable("<%= tableName %>", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,6 +29,6 @@ module.exports = {
   },
 
   down: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
-    await queryInterface.dropTable('<%= tableName %>');
+    await queryInterface.dropTable("<%= tableName %>");
   }
 }

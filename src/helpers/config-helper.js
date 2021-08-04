@@ -87,35 +87,35 @@ const api = {
     if (ext === 'ts') {
       return `import { Options } from "sequelize/types";
 
-      const development: Options = {
-        username: "root",
-        password: "root",
-        database: "development_database",
-        host: "127.0.0.1",
-        dialect: "mysql"
-      }
-      
-      const test: Options = {
-        username: "root",
-        password: "root",
-        database: "development_dtest",
-        host: "127.0.0.1",
-        dialect: "mysql"
-      }
-      
-      const production: Options = {
-        username: "root",
-        password: "root",
-        database: "development_production",
-        host: "127.0.0.1",
-        dialect: "mysql"
-      }
-      
-      export default {
-        development,
-        test,
-        production
-      }`;
+const development: Options = {
+  username: "root",
+  password: "root",
+  database: "development_database",
+  host: "127.0.0.1",
+  dialect: "mysql"
+}
+
+const test: Options = {
+  username: "root",
+  password: "root",
+  database: "development_dtest",
+  host: "127.0.0.1",
+  dialect: "mysql"
+}
+
+const production: Options = {
+  username: "root",
+  password: "root",
+  database: "development_production",
+  host: "127.0.0.1",
+  dialect: "mysql"
+}
+
+export default {
+  development,
+  test,
+  production
+}`;
     }
     return (
       JSON.stringify(
