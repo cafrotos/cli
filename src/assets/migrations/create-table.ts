@@ -29,6 +29,6 @@ module.exports = {
   },
 
   down: async (queryInterface: QueryInterface, Sequelize: typeof DataTypes) => {
-    await queryInterface.dropTable("<%= tableName %>");
+    await queryInterface.dropTable("<%= tableName %>")
   }
 }
